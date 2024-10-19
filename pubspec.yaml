@@ -10,6 +10,10 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+  protobuf: ^3.1.0
+  fixnum: ^1.1.0
+  yaml: ^3.1.2
+  yaml_edit: ^2.2.1
   # path: ^1.8.0
 
 dev_dependencies:

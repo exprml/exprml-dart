@@ -1,0 +1,1 @@
+export 'src/decoder.dart' show Decoder;
