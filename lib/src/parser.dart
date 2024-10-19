@@ -8,7 +8,7 @@ import 'gen/pb/exprml/v1/value.pb.dart';
 class Parser {
   Parser();
 
-  final identRegexp = RegExp(r'^[a-zA-Z_][a-zA-Z0-9_]*$');
+  final identRegexp = RegExp(r'^\$[a-zA-Z_][a-zA-Z0-9_]*$');
 
   ParseOutput parse(ParseInput input) {
     try {
@@ -23,17 +23,19 @@ class Parser {
       case Value_Type.STR:
         final s = value.str;
         if (identRegexp.hasMatch(s)) {
-          return Expr(kind: Expr_Kind.REF, ref: Ref(ident: s));
+          return Expr(kind: Expr_Kind.REF, path: path, ref: Ref(ident: s));
         }
         if (s.length > 1 && s.startsWith('`') && s.endsWith('`')) {
           return Expr(
               kind: Expr_Kind.SCALAR,
+              path: path,
               scalar: Scalar(scalar: strValue(s.substring(1, s.length - 1))));
         }
         throw ArgumentError(
             'invalid Scalar: ${path.format()}: string literal must be enclosed by "`"');
       case Value_Type.BOOL || Value_Type.NUM:
-        return Expr(kind: Expr_Kind.SCALAR, scalar: Scalar(scalar: value));
+        return Expr(
+            kind: Expr_Kind.SCALAR, path: path, scalar: Scalar(scalar: value));
       case Value_Type.OBJ:
         if (value.obj.containsKey("eval")) {
           return _parseEval(path, value);
@@ -49,7 +51,7 @@ class Parser {
                 key,
                 _parse(path.append(['obj', key]), val),
               ));
-          return Expr(kind: Expr_Kind.OBJ, obj: Obj(obj: obj));
+          return Expr(kind: Expr_Kind.OBJ, path: path, obj: Obj(obj: obj));
         }
         if (value.obj.containsKey("arr")) {
           final arrVal = value.obj['arr']!;
@@ -60,7 +62,7 @@ class Parser {
           }
           final arr =
               arrVal.arr.map((val) => _parse(path.append(['arr']), val));
-          return Expr(kind: Expr_Kind.ARR, arr: Arr(arr: arr));
+          return Expr(kind: Expr_Kind.ARR, path: path, arr: Arr(arr: arr));
         }
         if (value.obj.containsKey("json")) {
           if (_includesNull(value.obj['json']!)) {
@@ -69,7 +71,9 @@ class Parser {
                 'invalid Json: $p: "json" property cannot contain null');
           }
           return Expr(
-              kind: Expr_Kind.JSON, json: Json(json: value.obj['json']!));
+              kind: Expr_Kind.JSON,
+              path: path,
+              json: Json(json: value.obj['json']!));
         }
         if (value.obj.containsKey("do")) {
           return _parseIter(value, path);
@@ -81,6 +85,7 @@ class Parser {
           }
           return Expr(
             kind: Expr_Kind.ELEM,
+            path: path,
             elem: Elem(
               get: _parse(path.append(['get']), value.obj['get']!),
               from: _parse(path.append(['from']), value.obj['from']!),
@@ -142,7 +147,8 @@ class Parser {
       }
       args[key] = _parse(path.append([prop, key]), argsVal.obj[key]!);
     }
-    return Expr(kind: Expr_Kind.CALL, call: Call(ident: prop, args: args));
+    return Expr(
+        kind: Expr_Kind.CALL, path: path, call: Call(ident: prop, args: args));
   }
 
   Expr _parseCases(Value value, Expr_Path path) {
@@ -160,7 +166,7 @@ class Parser {
             'invalid Cases: $p: "cases" property must contain only objects');
       }
       if (caseVal.obj.containsKey('otherwise')) {
-        var otherwise = _parse(
+        final otherwise = _parse(
             path.append(['cases', i, 'otherwise']), caseVal.obj['otherwise']!);
         cases.cases.add(Cases_Case(isOtherwise: true, otherwise: otherwise));
       } else {
@@ -168,18 +174,18 @@ class Parser {
           final p = path.append(['cases', i]).format();
           throw ArgumentError('invalid Case: $p: "when" property is required');
         }
-        var when =
-            _parse(path.append(['cases', i, 'when']), caseVal.obj['when']!);
         if (!caseVal.obj.containsKey('then')) {
           final p = path.append(['cases', i]).format();
           throw ArgumentError('invalid Case: $p: "then" property is required');
         }
-        var then =
+        final when =
+            _parse(path.append(['cases', i, 'when']), caseVal.obj['when']!);
+        final then =
             _parse(path.append(['cases', i, 'then']), caseVal.obj['then']!);
         cases.cases.add(Cases_Case(when: when, then: then));
       }
     }
-    return Expr(kind: Expr_Kind.CASES, cases: Cases());
+    return Expr(kind: Expr_Kind.CASES, path: path, cases: cases);
   }
 
   Expr _parseIter(Value value, Expr_Path path) {
@@ -204,8 +210,8 @@ class Parser {
               .map((e) => "\$$e")
               .toList();
           iter
-            ..posIdent = idents[0]
-            ..elemIdent = idents[1]
+            ..posIdent = idents[1]
+            ..elemIdent = idents[2]
             ..col = _parse(path.append([prop]), value.obj[prop]!);
       }
     }
@@ -213,12 +219,12 @@ class Parser {
       throw ArgumentError(
           'invalid Iter: ${path.format()}: "for(...vars...)" property is required');
     }
-    return Expr(kind: Expr_Kind.ITER, iter: iter);
+    return Expr(kind: Expr_Kind.ITER, path: path, iter: iter);
   }
 
   Expr _parseEval(Expr_Path path, Value value) {
     final eval = _parse(path.append(['eval']), value.obj['eval']!);
-    final expr = Expr(kind: Expr_Kind.EVAL, eval: Eval(eval: eval));
+    final expr = Expr(kind: Expr_Kind.EVAL, path: path, eval: Eval(eval: eval));
     if (value.obj.containsKey("where")) {
       final whereVal = value.obj['where']!;
       if (whereVal.type != Value_Type.ARR) {
@@ -274,7 +280,9 @@ class Parser {
     }
     final operand = _parse(path.append([prop]), value.obj[prop]!);
     return Expr(
-        kind: Expr_Kind.OP_UNARY, opUnary: OpUnary(op: op, operand: operand));
+        kind: Expr_Kind.OP_UNARY,
+        path: path,
+        opUnary: OpUnary(op: op, operand: operand));
   }
 
   Expr? _tryParseOpBinary(Value value, Expr_Path path, String prop) {
@@ -307,6 +315,7 @@ class Parser {
     ];
     return Expr(
         kind: Expr_Kind.OP_BINARY,
+        path: path,
         opBinary: OpBinary(op: op, left: left, right: right));
   }
 
@@ -340,12 +349,13 @@ class Parser {
     ];
     return Expr(
         kind: Expr_Kind.OP_VARIADIC,
+        path: path,
         opVariadic: OpVariadic(op: op, operands: operands));
   }
 
   bool _includesNull(Value value) {
     if (value.type == Value_Type.NULL) {
-      return false;
+      return true;
     }
     return value.obj.values.any(_includesNull) || value.arr.any(_includesNull);
   }

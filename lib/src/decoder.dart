@@ -1,6 +1,7 @@
+import 'package:yaml/yaml.dart';
+
 import 'gen/pb/exprml/v1/decoder.pb.dart';
 import 'gen/pb/exprml/v1/value.pb.dart';
-import 'package:yaml/yaml.dart';
 
 class Decoder {
   Decoder();
@@ -16,6 +17,8 @@ class Decoder {
   }
 
   Value _convertFromDart(dynamic value) => switch (value.runtimeType) {
+        // ignore: prefer_void_to_null
+        Null => Value(type: Value_Type.NULL),
         bool => Value(type: Value_Type.BOOL, bool_2: value),
         num ||
         int ||

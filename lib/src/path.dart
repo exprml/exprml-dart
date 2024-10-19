@@ -3,7 +3,19 @@ import 'package:fixnum/fixnum.dart';
 import 'gen/pb/exprml/v1/expr.pb.dart';
 
 extension ExprPathExtension on Expr_Path {
-  String format() => pos.map((p) => "/$p").join();
+  String format() {
+    if (pos.isEmpty) {
+      return "/";
+    } else {
+      return pos.map((p) {
+        if (p.hasIndex()) {
+          return "/${p.index}";
+        } else {
+          return "/${p.key}";
+        }
+      }).join();
+    }
+  }
 
   Expr_Path append(List<dynamic> pos) => Expr_Path(pos: [
         ...this.pos,
