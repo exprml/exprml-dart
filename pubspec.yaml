@@ -1,0 +1,17 @@
+name: exprml_dart
+description: |
+  exprml-dart is a Dart library implementing an ExprML interpreter. The ExprML is a programming language that can evaluate expressions represented in the YAML format.
+  The language specification is available at https://github.com/exprml/exprml-language .
+version: 0.0.0
+repository: https://github.com/exprml/exprml-dart
+
+environment:
+  sdk: ^3.2.5
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+
+dev_dependencies:
+  lints: ^2.1.0
+  test: ^1.24.0
