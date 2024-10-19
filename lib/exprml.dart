@@ -1,3 +1,6 @@
+/// Provides classes implementing the ExprML API, which includes Encoder, Decoder, Parser, and Evaluator.
+library;
+
 export 'src/decoder.dart' show Decoder;
 export 'src/def_stack.dart' show DefStackExtension, newDefinition;
 export 'src/encoder.dart' show Encoder;
