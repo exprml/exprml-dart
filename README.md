@@ -46,8 +46,14 @@ void main() {
 }
 ```
 
-<!--
-## API Documentation
--->
+### More examples
 
+- Above example: https://github.com/exprml/exprml-dart/blob/main/example/main.dart
+- Extension: https://github.com/exprml/exprml-dart/blob/main/example/extension.dart
+- BeforeEvaluate: https://github.com/exprml/exprml-dart/blob/main/example/before_evaluation.dart
+- AfterEvaluate: https://github.com/exprml/exprml-dart/blob/main/example/after_evaluation.dart
+
+## API Documentation
+
+https://pub.dev/documentation/exprml_dart/latest/index.html
 
