@@ -30,7 +30,7 @@ void main() {
     final testcase = testcases[name]!;
     test(name, () {
       final decodeResult =
-          Decoder().decode(DecodeInput(yaml: testcase.yamlInput!));
+          Decoder().decode(DecodeInput(text: testcase.yamlInput!));
       if (decodeResult.isError) {
         fail("fail to decode input yaml: ${decodeResult.errorMessage}");
       }

@@ -267,47 +267,8 @@ class EvaluatorApi {
   $pb.RpcClient _client;
   EvaluatorApi(this._client);
 
-  $async.Future<EvaluateOutput> evaluateExpr($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateExpr', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateEval($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateEval', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateScalar($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateScalar', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateRef($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateRef', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateObj($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateObj', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateArr($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateArr', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateJson($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateJson', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateIter($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateIter', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateElem($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateElem', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateCall($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateCall', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateCases($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateCases', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateOpUnary($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateOpUnary', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateOpBinary($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateOpBinary', request, EvaluateOutput())
-  ;
-  $async.Future<EvaluateOutput> evaluateOpVariadic($pb.ClientContext? ctx, EvaluateInput request) =>
-    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'EvaluateOpVariadic', request, EvaluateOutput())
+  $async.Future<EvaluateOutput> evaluate($pb.ClientContext? ctx, EvaluateInput request) =>
+    _client.invoke<EvaluateOutput>(ctx, 'Evaluator', 'Evaluate', request, EvaluateOutput())
   ;
 }
 

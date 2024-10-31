@@ -39,7 +39,7 @@ class EncodeInput extends $pb.GeneratedMessage {
   factory EncodeInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EncodeInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'exprml.v1'), createEmptyInstance: create)
-    ..e<EncodeInput_Format>(1, _omitFieldNames ? '' : 'format', $pb.PbFieldType.OE, defaultOrMaker: EncodeInput_Format.YAML, valueOf: EncodeInput_Format.valueOf, enumValues: EncodeInput_Format.values)
+    ..e<EncodeInput_Format>(1, _omitFieldNames ? '' : 'format', $pb.PbFieldType.OE, defaultOrMaker: EncodeInput_Format.JSON, valueOf: EncodeInput_Format.valueOf, enumValues: EncodeInput_Format.values)
     ..aOM<$0.Value>(3, _omitFieldNames ? '' : 'value', subBuilder: $0.Value.create)
     ..hasRequiredFields = false
   ;
@@ -93,7 +93,7 @@ class EncodeOutput extends $pb.GeneratedMessage {
   factory EncodeOutput({
     $core.bool? isError,
     $core.String? errorMessage,
-    $core.String? result,
+    $core.String? text,
   }) {
     final $result = create();
     if (isError != null) {
@@ -102,8 +102,8 @@ class EncodeOutput extends $pb.GeneratedMessage {
     if (errorMessage != null) {
       $result.errorMessage = errorMessage;
     }
-    if (result != null) {
-      $result.result = result;
+    if (text != null) {
+      $result.text = text;
     }
     return $result;
   }
@@ -114,7 +114,7 @@ class EncodeOutput extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'EncodeOutput', package: const $pb.PackageName(_omitMessageNames ? '' : 'exprml.v1'), createEmptyInstance: create)
     ..aOB(1, _omitFieldNames ? '' : 'isError')
     ..aOS(2, _omitFieldNames ? '' : 'errorMessage')
-    ..aOS(3, _omitFieldNames ? '' : 'result')
+    ..aOS(3, _omitFieldNames ? '' : 'text')
     ..hasRequiredFields = false
   ;
 
@@ -159,15 +159,15 @@ class EncodeOutput extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   void clearErrorMessage() => clearField(2);
 
-  /// Encoded YAML or JSON string.
+  /// Encoded string in JSON (or JSON-compatible YAML).
   @$pb.TagNumber(3)
-  $core.String get result => $_getSZ(2);
+  $core.String get text => $_getSZ(2);
   @$pb.TagNumber(3)
-  set result($core.String v) { $_setString(2, v); }
+  set text($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasResult() => $_has(2);
+  $core.bool hasText() => $_has(2);
   @$pb.TagNumber(3)
-  void clearResult() => clearField(3);
+  void clearText() => clearField(3);
 }
 
 class EncoderApi {

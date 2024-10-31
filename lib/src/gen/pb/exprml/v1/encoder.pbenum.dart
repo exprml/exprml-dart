@@ -15,12 +15,12 @@ import 'package:protobuf/protobuf.dart' as $pb;
 
 /// Format of the output string.
 class EncodeInput_Format extends $pb.ProtobufEnum {
-  static const EncodeInput_Format YAML = EncodeInput_Format._(0, _omitEnumNames ? '' : 'YAML');
-  static const EncodeInput_Format JSON = EncodeInput_Format._(1, _omitEnumNames ? '' : 'JSON');
+  static const EncodeInput_Format JSON = EncodeInput_Format._(0, _omitEnumNames ? '' : 'JSON');
+  static const EncodeInput_Format YAML = EncodeInput_Format._(1, _omitEnumNames ? '' : 'YAML');
 
   static const $core.List<EncodeInput_Format> values = <EncodeInput_Format> [
-    YAML,
     JSON,
+    YAML,
   ];
 
   static final $core.Map<$core.int, EncodeInput_Format> _byValue = $pb.ProtobufEnum.initByValue(values);

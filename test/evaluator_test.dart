@@ -33,7 +33,7 @@ void main() {
       if (!testcases.containsKey(key)) {
         testcases[key] = _Testcase();
       }
-      final d = Decoder().decode(DecodeInput(yaml: e.readAsStringSync()));
+      final d = Decoder().decode(DecodeInput(text: e.readAsStringSync()));
       if (d.isError) {
         fail("fail to decode want yaml file: ${e.path}: ${d.errorMessage}");
       }
@@ -61,7 +61,7 @@ void main() {
     final testcase = testcases[name]!;
     test(name, () {
       final decodeResult =
-          Decoder().decode(DecodeInput(yaml: testcase.yamlInput!));
+          Decoder().decode(DecodeInput(text: testcase.yamlInput!));
       if(decodeResult.isError){
         fail("fail to decode input yaml: ${decodeResult.errorMessage}");
       }

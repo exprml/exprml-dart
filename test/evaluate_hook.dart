@@ -7,7 +7,7 @@ void main() {
     final evalPaths = <String>[];
 
     final decodeResult = Decoder().decode(
-        DecodeInput(yaml: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
+        DecodeInput(text: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
     expect(decodeResult.isError, isFalse);
 
     final parseResult = Parser().parse(ParseInput(value: decodeResult.value));
@@ -28,7 +28,7 @@ void main() {
     final evalTypes = <Value_Type>[];
 
     final decodeResult = Decoder().decode(
-        DecodeInput(yaml: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
+        DecodeInput(text: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
     expect(decodeResult.isError, isFalse);
 
     final parseResult = Parser().parse(ParseInput(value: decodeResult.value));

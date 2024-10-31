@@ -19,13 +19,13 @@ import 'value.pbjson.dart' as $0;
 const DecodeInput$json = {
   '1': 'DecodeInput',
   '2': [
-    {'1': 'yaml', '3': 1, '4': 1, '5': 9, '10': 'yaml'},
+    {'1': 'text', '3': 1, '4': 1, '5': 9, '10': 'text'},
   ],
 };
 
 /// Descriptor for `DecodeInput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List decodeInputDescriptor = $convert.base64Decode(
-    'CgtEZWNvZGVJbnB1dBISCgR5YW1sGAEgASgJUgR5YW1s');
+    'CgtEZWNvZGVJbnB1dBISCgR0ZXh0GAEgASgJUgR0ZXh0');
 
 @$core.Deprecated('Use decodeOutputDescriptor instead')
 const DecodeOutput$json = {

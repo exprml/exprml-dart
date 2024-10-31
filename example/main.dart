@@ -4,7 +4,7 @@ import 'package:exprml_dart/exprml_pb.dart';
 void main() {
   // Decode JSON value from a source string in YAML.
   final decodeResult = Decoder()
-      .decode(DecodeInput(yaml: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
+      .decode(DecodeInput(text: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
 
   // Parse an AST from the decoded value.
   final parseResult = Parser()
@@ -18,6 +18,6 @@ void main() {
   final encodeResult = Encoder()
       .encode(EncodeInput(value: evaluateResult.value));
 
-  print(encodeResult.result);
+  print(encodeResult.text);
   // => "Hello, ExprML!"
 }

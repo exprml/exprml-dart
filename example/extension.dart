@@ -3,7 +3,7 @@ import 'package:exprml_dart/exprml_pb.dart';
 
 void main() {
   final decodeResult = Decoder()
-      .decode(DecodeInput(yaml: r'$hello: { $name: "`ExprML Extension`" }'));
+      .decode(DecodeInput(text: r'$hello: { $name: "`ExprML Extension`" }'));
   final parseResult = Parser().parse(ParseInput(value: decodeResult.value));
 
   final config = Config()
@@ -24,6 +24,6 @@ void main() {
 
   final encodeResult =
       Encoder().encode(EncodeInput(value: evaluateResult.value));
-  print(encodeResult.result);
+  print(encodeResult.text);
   // => "Hello, ExprML Extension!"
 }

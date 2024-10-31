@@ -88,20 +88,7 @@ final $typed_data.Uint8List evaluateOutputDescriptor = $convert.base64Decode(
 const $core.Map<$core.String, $core.dynamic> EvaluatorServiceBase$json = {
   '1': 'Evaluator',
   '2': [
-    {'1': 'EvaluateExpr', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateEval', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateScalar', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateRef', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateObj', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateArr', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateJson', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateIter', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateElem', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateCall', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateCases', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateOpUnary', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateOpBinary', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
-    {'1': 'EvaluateOpVariadic', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
+    {'1': 'Evaluate', '2': '.exprml.v1.EvaluateInput', '3': '.exprml.v1.EvaluateOutput', '4': {}},
   ],
 };
 
@@ -136,23 +123,6 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> EvaluatorS
 
 /// Descriptor for `Evaluator`. Decode as a `google.protobuf.ServiceDescriptorProto`.
 final $typed_data.Uint8List evaluatorServiceDescriptor = $convert.base64Decode(
-    'CglFdmFsdWF0b3ISRQoMRXZhbHVhdGVFeHByEhguZXhwcm1sLnYxLkV2YWx1YXRlSW5wdXQaGS'
-    '5leHBybWwudjEuRXZhbHVhdGVPdXRwdXQiABJFCgxFdmFsdWF0ZUV2YWwSGC5leHBybWwudjEu'
-    'RXZhbHVhdGVJbnB1dBoZLmV4cHJtbC52MS5FdmFsdWF0ZU91dHB1dCIAEkcKDkV2YWx1YXRlU2'
-    'NhbGFyEhguZXhwcm1sLnYxLkV2YWx1YXRlSW5wdXQaGS5leHBybWwudjEuRXZhbHVhdGVPdXRw'
-    'dXQiABJECgtFdmFsdWF0ZVJlZhIYLmV4cHJtbC52MS5FdmFsdWF0ZUlucHV0GhkuZXhwcm1sLn'
-    'YxLkV2YWx1YXRlT3V0cHV0IgASRAoLRXZhbHVhdGVPYmoSGC5leHBybWwudjEuRXZhbHVhdGVJ'
-    'bnB1dBoZLmV4cHJtbC52MS5FdmFsdWF0ZU91dHB1dCIAEkQKC0V2YWx1YXRlQXJyEhguZXhwcm'
-    '1sLnYxLkV2YWx1YXRlSW5wdXQaGS5leHBybWwudjEuRXZhbHVhdGVPdXRwdXQiABJFCgxFdmFs'
-    'dWF0ZUpzb24SGC5leHBybWwudjEuRXZhbHVhdGVJbnB1dBoZLmV4cHJtbC52MS5FdmFsdWF0ZU'
-    '91dHB1dCIAEkUKDEV2YWx1YXRlSXRlchIYLmV4cHJtbC52MS5FdmFsdWF0ZUlucHV0GhkuZXhw'
-    'cm1sLnYxLkV2YWx1YXRlT3V0cHV0IgASRQoMRXZhbHVhdGVFbGVtEhguZXhwcm1sLnYxLkV2YW'
-    'x1YXRlSW5wdXQaGS5leHBybWwudjEuRXZhbHVhdGVPdXRwdXQiABJFCgxFdmFsdWF0ZUNhbGwS'
-    'GC5leHBybWwudjEuRXZhbHVhdGVJbnB1dBoZLmV4cHJtbC52MS5FdmFsdWF0ZU91dHB1dCIAEk'
-    'YKDUV2YWx1YXRlQ2FzZXMSGC5leHBybWwudjEuRXZhbHVhdGVJbnB1dBoZLmV4cHJtbC52MS5F'
-    'dmFsdWF0ZU91dHB1dCIAEkgKD0V2YWx1YXRlT3BVbmFyeRIYLmV4cHJtbC52MS5FdmFsdWF0ZU'
-    'lucHV0GhkuZXhwcm1sLnYxLkV2YWx1YXRlT3V0cHV0IgASSQoQRXZhbHVhdGVPcEJpbmFyeRIY'
-    'LmV4cHJtbC52MS5FdmFsdWF0ZUlucHV0GhkuZXhwcm1sLnYxLkV2YWx1YXRlT3V0cHV0IgASSw'
-    'oSRXZhbHVhdGVPcFZhcmlhZGljEhguZXhwcm1sLnYxLkV2YWx1YXRlSW5wdXQaGS5leHBybWwu'
-    'djEuRXZhbHVhdGVPdXRwdXQiAA==');
+    'CglFdmFsdWF0b3ISQQoIRXZhbHVhdGUSGC5leHBybWwudjEuRXZhbHVhdGVJbnB1dBoZLmV4cH'
+    'JtbC52MS5FdmFsdWF0ZU91dHB1dCIA');
 

@@ -27,7 +27,7 @@ class Encoder {
         return EncodeOutput(
             isError: true, errorMessage: 'Unsupported format: ${input.format}');
     }
-    return EncodeOutput(result: s);
+    return EncodeOutput(text: s);
   }
 
   dynamic _convertToDart(Value value) {

@@ -9,7 +9,7 @@ class Decoder {
   DecodeOutput decode(DecodeInput input) {
     final dynamic decoded;
     try {
-      decoded = loadYaml(input.yaml);
+      decoded = loadYaml(input.text);
     } catch (e) {
       return DecodeOutput(isError: true, errorMessage: e.toString());
     }

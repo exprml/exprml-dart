@@ -19,11 +19,11 @@ import 'value.pb.dart' as $0;
 /// DecodeInput is the input message for the Decode method.
 class DecodeInput extends $pb.GeneratedMessage {
   factory DecodeInput({
-    $core.String? yaml,
+    $core.String? text,
   }) {
     final $result = create();
-    if (yaml != null) {
-      $result.yaml = yaml;
+    if (text != null) {
+      $result.text = text;
     }
     return $result;
   }
@@ -32,7 +32,7 @@ class DecodeInput extends $pb.GeneratedMessage {
   factory DecodeInput.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DecodeInput', package: const $pb.PackageName(_omitMessageNames ? '' : 'exprml.v1'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'yaml')
+    ..aOS(1, _omitFieldNames ? '' : 'text')
     ..hasRequiredFields = false
   ;
 
@@ -57,15 +57,15 @@ class DecodeInput extends $pb.GeneratedMessage {
   static DecodeInput getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DecodeInput>(create);
   static DecodeInput? _defaultInstance;
 
-  /// YAML string to decode.
+  /// string in JSON (and JSON-compatible YAML).
   @$pb.TagNumber(1)
-  $core.String get yaml => $_getSZ(0);
+  $core.String get text => $_getSZ(0);
   @$pb.TagNumber(1)
-  set yaml($core.String v) { $_setString(0, v); }
+  set text($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasYaml() => $_has(0);
+  $core.bool hasText() => $_has(0);
   @$pb.TagNumber(1)
-  void clearYaml() => clearField(1);
+  void clearText() => clearField(1);
 }
 
 /// DecodeOutput is the output message for the Decode method.

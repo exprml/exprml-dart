@@ -45,7 +45,7 @@ void main() {
     final testcase = testcases[name]!;
     test(name, () {
       final decodeResult =
-          Decoder().decode(DecodeInput(yaml: testcase.yamlInput));
+          Decoder().decode(DecodeInput(text: testcase.yamlInput));
       expect(decodeResult.isError, isFalse);
 
       final parseResult = Parser().parse(ParseInput(value: decodeResult.value));

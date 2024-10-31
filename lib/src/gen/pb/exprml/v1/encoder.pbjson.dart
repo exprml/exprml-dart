@@ -29,8 +29,8 @@ const EncodeInput$json = {
 const EncodeInput_Format$json = {
   '1': 'Format',
   '2': [
-    {'1': 'YAML', '2': 0},
-    {'1': 'JSON', '2': 1},
+    {'1': 'JSON', '2': 0},
+    {'1': 'YAML', '2': 1},
   ],
 };
 
@@ -38,7 +38,7 @@ const EncodeInput_Format$json = {
 final $typed_data.Uint8List encodeInputDescriptor = $convert.base64Decode(
     'CgtFbmNvZGVJbnB1dBI1CgZmb3JtYXQYASABKA4yHS5leHBybWwudjEuRW5jb2RlSW5wdXQuRm'
     '9ybWF0UgZmb3JtYXQSJgoFdmFsdWUYAyABKAsyEC5leHBybWwudjEuVmFsdWVSBXZhbHVlIhwK'
-    'BkZvcm1hdBIICgRZQU1MEAASCAoESlNPThAB');
+    'BkZvcm1hdBIICgRKU09OEAASCAoEWUFNTBAB');
 
 @$core.Deprecated('Use encodeOutputDescriptor instead')
 const EncodeOutput$json = {
@@ -46,14 +46,14 @@ const EncodeOutput$json = {
   '2': [
     {'1': 'is_error', '3': 1, '4': 1, '5': 8, '10': 'isError'},
     {'1': 'error_message', '3': 2, '4': 1, '5': 9, '10': 'errorMessage'},
-    {'1': 'result', '3': 3, '4': 1, '5': 9, '10': 'result'},
+    {'1': 'text', '3': 3, '4': 1, '5': 9, '10': 'text'},
   ],
 };
 
 /// Descriptor for `EncodeOutput`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List encodeOutputDescriptor = $convert.base64Decode(
     'CgxFbmNvZGVPdXRwdXQSGQoIaXNfZXJyb3IYASABKAhSB2lzRXJyb3ISIwoNZXJyb3JfbWVzc2'
-    'FnZRgCIAEoCVIMZXJyb3JNZXNzYWdlEhYKBnJlc3VsdBgDIAEoCVIGcmVzdWx0');
+    'FnZRgCIAEoCVIMZXJyb3JNZXNzYWdlEhIKBHRleHQYAyABKAlSBHRleHQ=');
 
 const $core.Map<$core.String, $core.dynamic> EncoderServiceBase$json = {
   '1': 'Encoder',

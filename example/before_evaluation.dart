@@ -3,7 +3,7 @@ import 'package:exprml_dart/exprml_pb.dart';
 
 void main() {
   final decodeResult = Decoder().decode(
-      DecodeInput(yaml: r"cat: ['`Hello`', '`, `', '`ExprML`', '`!`']"));
+      DecodeInput(text: r"cat: ['`Hello`', '`, `', '`ExprML`', '`!`']"));
   final parseResult = Parser().parse(ParseInput(value: decodeResult.value));
 
   final config = Config()

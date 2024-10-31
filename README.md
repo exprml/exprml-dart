@@ -1,9 +1,9 @@
 # exprml-dart
 
-exprml-dart is a Dart library implementing an ExprML interpreter.
-The ExprML is a programming language that can evaluate expressions represented in the YAML format.
+exprml_dart is a Dart library implementing an ExprML interpreter.
+The ExprML is a programming language that can evaluate expressions represented in JSON (and JSON-compatible YAML).
 
-The language specification is available at https://github.com/exprml/exprml-language .
+The ExprML language specification is available at https://github.com/exprml/exprml-language .
 
 ## Features
 
@@ -48,10 +48,10 @@ void main() {
 
 ### More examples
 
-- Above example: https://github.com/exprml/exprml-dart/blob/main/example/main.dart
-- Extension: https://github.com/exprml/exprml-dart/blob/main/example/extension.dart
-- BeforeEvaluate: https://github.com/exprml/exprml-dart/blob/main/example/before_evaluation.dart
-- AfterEvaluate: https://github.com/exprml/exprml-dart/blob/main/example/after_evaluation.dart
+- Above example: https://github.com/exprml/exprml_dart/blob/main/example/main.dart
+- Extension: https://github.com/exprml/exprml_dart/blob/main/example/extension.dart
+- BeforeEvaluate: https://github.com/exprml/exprml_dart/blob/main/example/before_evaluation.dart
+- AfterEvaluate: https://github.com/exprml/exprml_dart/blob/main/example/after_evaluation.dart
 
 ## API Documentation
 
