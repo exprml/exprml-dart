@@ -7,9 +7,9 @@ The ExprML language specification is available at https://github.com/exprml/expr
 
 ## Features
 
-- Decoder: Decodes YAML string into JSON values in Dart.
-- Encoder: Encodes JSON values into string.
-- Parser: Parses ASTs of ExprML expression from the JSON values decoded from source YAML.
+- Decoder: Decodes text in JSON (or JSON-compatible YAML) into JSON values in Dart.
+- Encoder: Encodes JSON values into text JSON (or JSON-compatible YAML).
+- Parser: Parses ASTs of ExprML expression from the JSON values decoded from source.
 - Evaluator: Evaluates the ASTs of ExprML expression as JSON values.
 
 ## Getting started
@@ -25,7 +25,7 @@ import 'package:exprml_dart/exprml.dart';
 import 'package:exprml_dart/exprml_pb.dart';
 
 void main() {
-  // Decode JSON value from a source string in YAML.
+  // Decode JSON value from a source string.
   final decodeResult = Decoder()
       .decode(DecodeInput(yaml: 'cat: ["`Hello`", "`, `", "`ExprML`", "`!`"]'));
 
@@ -37,7 +37,7 @@ void main() {
   final evaluateResult = Evaluator()
       .evaluateExpr(EvaluateInput(expr: parseResult.expr));
 
-  // Encode the evaluated JSON value into a source string in YAML.
+  // Encode the evaluated JSON value into a string.
   final encodeResult = Encoder()
       .encode(EncodeInput(value: evaluateResult.value));
 
